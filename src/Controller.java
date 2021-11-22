@@ -5,7 +5,7 @@ public class Controller implements KeyListener {
     private Model model;
 
     public Controller(Viewer viewer) {
-        System.out.println("Controller: "+this);
+        System.out.println("Controller: " + this);
         model = new Model(viewer);
 
     }
