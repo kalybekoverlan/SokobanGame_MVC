@@ -24,7 +24,25 @@ public class Controller implements KeyListener {
 
     public void keyReleased(KeyEvent event) {
         int keyCode = event.getKeyCode();
-        System.out.println(keyCode);
+
+        String direction = "";
+        switch (keyCode) {
+            case 37:
+                direction = "Right";
+                break;
+            case 38:
+                direction = "Up";
+                break;
+            case 39:
+                direction = "Left";
+                break;
+            case 40:
+                direction = "Down";
+                break;
+            default:
+                return;
+        }
+        System.out.println(direction);
 
     }
 
