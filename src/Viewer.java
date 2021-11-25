@@ -13,7 +13,7 @@ public class Viewer {
         JFrame frame = new JFrame("Sokoban Game MVC Pattern");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(canvas);
-        frame.setSize(600, 600);
+        frame.setSize(700, 700);
         frame.setLocation(300, 300);
         frame.setVisible(true);
         frame.addKeyListener(controller);
