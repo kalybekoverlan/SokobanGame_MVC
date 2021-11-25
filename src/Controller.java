@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 public class Controller implements KeyListener {
     private Model model;
 
+
     public Controller(Viewer viewer) {
         System.out.println("Controller: " + this);
         model = new Model(viewer);
@@ -28,13 +29,13 @@ public class Controller implements KeyListener {
         String direction = "";
         switch (keyCode) {
             case 37:
-                direction = "Right";
+                direction = "Left";
                 break;
             case 38:
                 direction = "Up";
                 break;
             case 39:
-                direction = "Left";
+                direction = "Right";
                 break;
             case 40:
                 direction = "Down";
@@ -42,7 +43,8 @@ public class Controller implements KeyListener {
             default:
                 return;
         }
-        System.out.println(direction);
+
+         model.move(direction);
 
     }
 
