@@ -19,11 +19,7 @@ public class Controller implements KeyListener {
 
     }
 
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-    public void keyReleased(KeyEvent event) {
+    public void keyPressed(KeyEvent event) {
         int keyCode = event.getKeyCode();
 
         String direction = "";
@@ -43,11 +39,11 @@ public class Controller implements KeyListener {
             default:
                 return;
         }
-
-         model.move(direction);
-
+        model.move(direction);
     }
 
+    public void keyReleased(KeyEvent event) {
 
+    }
 
 }

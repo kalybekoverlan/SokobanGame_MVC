@@ -12,9 +12,32 @@ public class Model {
     }
 
     public void move(String direction) {
-        x = x + 70;
-        System.out.println("direction is " + x);
+        if(direction.equals("Left")) {
+            moveLeft();
+        } else if(direction.equals("Up")) {
+            moveUp();
+        } else if(direction.equals("Right")) {
+            moveRight();
+        } else if(direction.equals("Down")) {
+            moveDown();
+        }
         viewer.update();
+    }
+
+    private void moveLeft() {
+        x = x - 10;
+    }
+
+    private void moveUp() {
+        y = y - 10;
+    }
+
+    private void moveRight() {
+        x = x + 10;
+    }
+
+    private void moveDown() {
+        y = y + 10;
     }
 
     public int getX() {
