@@ -12,7 +12,9 @@ public class Model {
     }
 
     public void move(String direction) {
-        System.out.println("direction is " + direction);
+        x = x + 70;
+        System.out.println("direction is " + x);
+        viewer.update();
     }
 
     public int getX() {
