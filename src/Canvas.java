@@ -21,16 +21,19 @@ public class Canvas extends JPanel{
         int y = 50;
         int width = 50;
         int height = 50;
-
+//224,116,27
         for(int i=0; i < desktop.length; i++) {
             for(int j=0; j < desktop[i].length; j++ ) {
                 if(desktop[i][j] == 1) {
-                    g.setColor(Color.WHITE);
+                    g.setColor(new Color(199, 18, 50));
                     g.fillRect(x, y, width, height);
                     g.setColor(Color.YELLOW);
                     g.drawRect(x, y, width, height);
-
-                    //x = x + width + 10;
+                } else if(desktop[i][j] == 2) {
+                    g.setColor(new Color(39, 177, 67));
+                    g.fillRect(x, y, width, height);
+                    g.setColor(Color.BLUE);
+                    g.drawRect(x, y, width, height);
                 } else {
                     g.setColor(Color.WHITE);
                     g.drawRect(x, y, width, height);

@@ -4,46 +4,41 @@ import java.awt.event.KeyEvent;
 public class Controller implements KeyListener {
     private Model model;
 
-
     public Controller(Viewer viewer) {
         System.out.println("Controller: " + this);
         model = new Model(viewer);
-
     }
 
     public Model getModel() {
         return model;
     }
 
-    public void keyTyped(KeyEvent e) {
-
-    }
-
     public void keyPressed(KeyEvent event) {
         int keyCode = event.getKeyCode();
 
+
         String direction = "";
+    // left, up, right, down
         switch (keyCode) {
             case 37:
-                direction = "Left";
+                model.move("Left");
                 break;
             case 38:
-                direction = "Up";
+                model.move("Up");
                 break;
             case 39:
-                direction = "Right";
+                model.move("Right");
                 break;
             case 40:
-                direction = "Down";
+                model.move("Down");
                 break;
             default:
                 return;
         }
-        model.move(direction);
     }
 
-    public void keyReleased(KeyEvent event) {
+    public void keyReleased(KeyEvent event) {}
 
-    }
+    public void keyTyped(KeyEvent e) {}
 
 }
