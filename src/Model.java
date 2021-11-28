@@ -48,7 +48,14 @@ public class Model {
         } else {
             return;
         }
+        checkGoal();
         viewer.update();
+    }
+
+    private void checkGoal() {
+        if (desktop[6][6] == 0){
+            desktop[6][6] = 4;
+        }
     }
 
     private void moveUp() {
@@ -60,7 +67,7 @@ public class Model {
     }
 
     private void moveRight() {
-        if(desktop[indexX][indexY + 1] == 0) {
+        if(desktop[indexX][indexY + 1] == 0 || desktop[indexX][indexY + 1] == 4) {
             desktop[indexX][indexY] = 0;
             indexY = indexY + 1;
             desktop[indexX][indexY] = 1;
