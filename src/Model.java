@@ -5,7 +5,6 @@ public class Model {
     private int indexY;
 
     public Model(Viewer viewer) {
-        System.out.println("Model: " + this);
         this.viewer = viewer;
         // Optimize initialization method
         initialization();
@@ -18,12 +17,16 @@ public class Model {
     // 4 - destination
     private void initialization() {
         desktop = new int[][] {
-                {2, 2, 2, 2, 2, 2},
-                {2, 0, 0, 0, 0, 2},
-                {2, 0, 0, 0, 0, 2},
-                {2, 0, 0, 0, 0, 2},
-                {2, 0, 0, 0, 0, 2},
-                {2, 2, 2, 2, 2, 2}
+                {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+                {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+                {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+                {2, 0, 0, 0, 0, 0, 3, 0, 0, 2},
+                {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+                {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+                {2, 0, 0, 0, 0, 0, 4, 0, 0, 2},
+                {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+                {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+                {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
         };
         // solve
         indexX = 3;
