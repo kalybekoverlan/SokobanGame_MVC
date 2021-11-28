@@ -59,7 +59,7 @@ public class Canvas extends JPanel{
                     g.drawImage(imageBox, x, y, null);
                 } else if(desktop[i][j] == 4) {
                     g.drawImage(imageGoal, x, y, null);
-                } 
+                }
                 x = x + width + 10;
             }
             x = start;
