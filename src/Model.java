@@ -6,6 +6,7 @@ public class Model {
 
     public Model(Viewer viewer) {
         this.viewer = viewer;
+        Levels levels = new Levels();
         // Optimize initialization method
         initialization();
     }
