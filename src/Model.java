@@ -35,6 +35,28 @@ public class Model {
         // solve end
 
     }
+
+    private void nextLevel() {
+        desktop = new int[][] {
+                {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+                {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+                {2, 0, 4, 0, 0, 0, 0, 0, 0, 2},
+                {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+                {2, 2, 2, 2, 0, 2, 2, 2, 2, 2},
+                {2, 0, 0, 0, 0, 3, 0, 0, 0, 2},
+                {2, 0, 0, 0, 0, 0, 4, 0, 0, 2},
+                {2, 0, 3, 0, 0, 0, 0, 0, 0, 2},
+                {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+                {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        };
+        // solve
+        indexX = 8;
+        indexY = 4;
+        desktop[indexX][indexY] = 1;
+        // solve end
+
+    }
+
     // up, right, down, left,
     public void move(String direction) {
         if(direction.equals("Up")) {
@@ -70,6 +92,8 @@ public class Model {
         if(isWon){
             if(viewer.showWonDialog() ) {
                 System.out.println("Go to next Level");
+                nextLevel();
+                viewer.update();
             }
         }
     }
