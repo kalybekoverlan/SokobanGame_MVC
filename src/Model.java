@@ -23,7 +23,7 @@ public class Model {
                 {2, 0, 0, 0, 0, 0, 3, 0, 0, 2},
                 {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                 {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-                {2, 0, 0, 0, 0, 0, 4, 0, 0, 2},
+                {2, 0, 0, 3, 0, 0, 4, 0, 0, 2},
                 {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                 {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                 {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -49,6 +49,7 @@ public class Model {
             return;
         }
         checkGoal();
+        won();
         viewer.update();
     }
 
@@ -57,6 +58,17 @@ public class Model {
             desktop[6][6] = 4;
         } else if (desktop[2][2] == 0) {
             desktop[2][2] = 4;
+        }
+    }
+
+    private void won() {
+        boolean isWon = true;
+        if(desktop[2][2] != 3 || desktop[6][6] != 3) {
+            isWon = false;
+        }
+
+        if(isWon){
+            System.out.println("Won!!!");
         }
     }
 
