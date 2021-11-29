@@ -49,8 +49,8 @@ public class Model {
             return;
         }
         checkGoal();
-        won();
         viewer.update();
+        won();
     }
 
     private void checkGoal() {
@@ -68,7 +68,9 @@ public class Model {
         }
 
         if(isWon){
-            System.out.println("Won!!!");
+            if(viewer.showWonDialog() ) {
+                System.out.println("Go to next Level");
+            }
         }
     }
 
