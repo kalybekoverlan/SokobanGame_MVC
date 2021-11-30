@@ -3,10 +3,11 @@ public class Model {
     private int[][] desktop;
     private int indexX;
     private int indexY;
+    private Levels levels;
 
     public Model(Viewer viewer) {
         this.viewer = viewer;
-        Levels levels = new Levels();
+        levels = new Levels();
         // Optimize initialization method
         initialization();
     }
@@ -31,27 +32,6 @@ public class Model {
         };
         // solve
         indexX = 3;
-        indexY = 4;
-        desktop[indexX][indexY] = 1;
-        // solve end
-
-    }
-
-    private void nextLevel() {
-        desktop = new int[][] {
-                {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-                {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-                {2, 0, 4, 0, 0, 0, 0, 0, 0, 2},
-                {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-                {2, 2, 2, 2, 0, 2, 2, 2, 2, 2},
-                {2, 0, 0, 0, 0, 3, 0, 0, 0, 2},
-                {2, 0, 0, 0, 0, 0, 4, 0, 0, 2},
-                {2, 0, 3, 0, 0, 0, 0, 0, 0, 2},
-                {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-                {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-        };
-        // solve
-        indexX = 8;
         indexY = 4;
         desktop[indexX][indexY] = 1;
         // solve end
@@ -93,7 +73,7 @@ public class Model {
         if(isWon){
             if(viewer.showWonDialog() ) {
                 System.out.println("Go to next Level");
-                nextLevel();
+                levels.nextLevel("levels/level4.sok");
                 viewer.update();
             }
         }
