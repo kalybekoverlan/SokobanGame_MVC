@@ -15,12 +15,17 @@ public class Levels {
         File file = new File(fileName);
         try{
             String contentFile = getContentFile(file);
-            System.out.println(contentFile);
+            desktop = convertStringIntoTwoDimensionArray(contentFile);
         } catch (Exception e) {
             System.out.println("Error : " + e);
         }
 
         return desktop;
+    }
+
+    private int[][] convertStringIntoTwoDimensionArray(String line) {
+        System.out.println(line);
+        return null;
     }
 
     private String getContentFile(File file) throws Exception{
