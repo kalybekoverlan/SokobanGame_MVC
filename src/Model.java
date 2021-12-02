@@ -25,6 +25,7 @@ public class Model {
         // solve
         indexX = getIndexXofGamer(desktop);
         indexY = getIndexYofGamer(desktop);
+        goalIndexes = getGoalIndexes(desktop);
         System.out.println(indexX+" "+indexY);
         desktop[indexX][indexY] = 1;
         // solve end
@@ -49,6 +50,12 @@ public class Model {
     }
 
     private void checkGoal() {
+        for(int i = 0; i < goalIndexes.length; i++){
+            for(int j = 0; j < goalIndexes[i].length; j++){
+                System.out.print(goalIndexes[i][j] + " ");
+            }
+            System.out.println();
+        }
         if (desktop[6][6] == 0){
             desktop[6][6] = 4;
         } else if (desktop[2][2] == 0) {
