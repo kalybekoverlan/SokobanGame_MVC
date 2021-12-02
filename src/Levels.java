@@ -7,7 +7,7 @@ public class Levels {
     private int level;
 
     public Levels() {
-        level=4;
+        level=1;
     }
 
     public int[][] nextLevel() {
@@ -15,16 +15,18 @@ public class Levels {
 
         switch(level) {
             case 1:
+                desktop = getLevelOne();
                 break;
-            case 2:
-                break;
-            case 3:
-                break;
+            // case 2:
+            //     desktop = getLevelTwo();
+            //     break;
+            // case 3:
+            //     desktop = getLevelThree();
+            //     break;
             default:
-                System.out.println("Default level 1");
-
+                level = 1;
+                desktop = getLevelOne();
         }
-
         level = level + 1;
         return desktop;
     }
@@ -116,6 +118,22 @@ public class Levels {
             throw new Exception("Basic I/O Exception : " + ioe);
         }
 
+    }
+
+    private int[][] getLevelOne() {
+        int[][] desktop = new int[][] {
+            {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+            {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+            {2, 0, 4, 0, 0, 0, 0, 0, 0, 2},
+            {2, 0, 0, 0, 0, 0, 3, 0, 0, 2},
+            {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+            {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+            {2, 0, 1, 3, 0, 0, 4, 0, 0, 2},
+            {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+            {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+            {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        };
+        return desktop;
     }
 
 

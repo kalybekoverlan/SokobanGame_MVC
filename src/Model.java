@@ -9,7 +9,9 @@ public class Model {
 
     public Model(Viewer viewer) {
         this.viewer = viewer;
+        isGamePlaying = true;
         levels = new Levels();
+        desktop = levels.nextLevel();
         // Optimize initialization method
         initialization();
     }
@@ -20,24 +22,12 @@ public class Model {
     // 3 - box
     // 4 - destination
     private void initialization() {
-        desktop = new int[][] {
-                {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-                {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-                {2, 0, 4, 0, 0, 0, 0, 0, 0, 2},
-                {2, 0, 0, 0, 0, 0, 3, 0, 0, 2},
-                {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-                {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-                {2, 0, 0, 3, 0, 0, 4, 0, 0, 2},
-                {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-                {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-                {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-        };
         // solve
-        indexX = 3;
-        indexY = 4;
+        indexX = getIndexXofGamer(desktop);
+        indexY = getIndexYofGamer(desktop);
+        System.out.println(indexX+" "+indexY);
         desktop[indexX][indexY] = 1;
         // solve end
-
     }
 
     // up, right, down, left,
@@ -75,7 +65,8 @@ public class Model {
         if(isWon){
             if(viewer.showWonDialog() ) {
                 System.out.println("Go to next Level");
-                levels.nextLevel();
+                desktop = levels.nextLevel();
+                initialization();
                 viewer.update();
             }
         }
@@ -144,5 +135,76 @@ public class Model {
     public int[][] getDesktop() {
         return  desktop;
     }
+
+    private boolean isSingleGamer(int[][] desktop) {
+        int gamerCounter=0;
+
+        for(int i = 0; i < desktop.length; i++){
+            for(int j = 0; j < desktop[i].length; j++){
+                if(desktop[i][j] == 1) {
+                    gamerCounter = gamerCounter + 1;
+                }
+            }
+        }
+
+        if(gamerCounter == 1) {
+            return true;
+        } else {
+            // System.out.println("Gamer: " + gamerCounter);
+            return false;
+        }
+    }
+
+    private int[][] getGoalIndexes(int[][] desktop) {
+        int goals=0;
+        for(int i = 0; i < desktop.length; i++){
+            for(int j = 0; j < desktop[i].length; j++){
+                if(desktop[i][j] == 4 ) {
+                    goals++;
+                }
+            }
+        }
+
+        int[][] indexes = new int[2][goals];
+
+        int y=0;
+        for(int i = 0; i < desktop.length; i++){
+            for(int j = 0; j < desktop[i].length; j++){
+                if(desktop[i][j] == 4 ) {
+                    indexes[0][y] = i;
+                    indexes[1][y] = j;
+                    y = y +1;
+                }
+            }
+        }
+
+        return indexes;
+    }
+
+    private  int getIndexXofGamer(int[][] desktop) {
+
+        for(int i = 0; i < desktop.length; i++){
+            for(int j = 0; j < desktop[i].length; j++){
+                if(desktop[i][j] == 1) {
+                    return i;
+                }
+            }
+        }
+        return 0;
+    }
+
+    private  int getIndexYofGamer(int[][] desktop) {
+
+        for(int i = 0; i < desktop.length; i++){
+            for(int j = 0; j < desktop[i].length; j++){
+                if(desktop[i][j] == 1) {
+                    return j;
+                }
+            }
+        }
+        return 0;
+    }
+
+
 
 }
