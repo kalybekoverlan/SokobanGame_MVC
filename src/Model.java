@@ -75,7 +75,7 @@ public class Model {
         if(isWon){
             if(viewer.showWonDialog() ) {
                 System.out.println("Go to next Level");
-                levels.nextLevel("levels/level4.sok");
+                levels.nextLevel();
                 viewer.update();
             }
         }

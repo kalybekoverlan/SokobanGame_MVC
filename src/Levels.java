@@ -10,25 +10,45 @@ public class Levels {
         level=4;
     }
 
-    public int[][] nextLevel(String fileName) {
+    public int[][] nextLevel() {
         int[][] desktop = null;
-        File file = new File(fileName);
-        try{
-            String contentFile = getContentFile(file);
-            desktop = convertString IntoTwoDimensionArray(contentFile);
-            System.out.println("after converting to two-dimensional array");
-            for(int i = 0; i < desktop.length; i++){
-                for(int j = 0; j < desktop[i].length; j++){
-                    System.out.print(desktop[i][j]);
-                }
-                System.out.println();
-            }
-        } catch (Exception e) {
-            System.out.println("Error : " + e);
+
+        switch(level) {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                System.out.println("Default level 1");
+
         }
 
+        level = level + 1;
         return desktop;
     }
+
+   // public int[][] nextLevel(String fileName) {
+   //
+   //      int[][] desktop = null;
+   //      File file = new File(fileName);
+   //      try{
+   //          String contentFile = getContentFile(file);
+   //          desktop = convertString IntoTwoDimensionArray(contentFile);
+   //          System.out.println("after converting to two-dimensional array");
+   //          for(int i = 0; i < desktop.length; i++){
+   //              for(int j = 0; j < desktop[i].length; j++){
+   //                  System.out.print(desktop[i][j]);
+   //              }
+   //              System.out.println();
+   //          }
+   //      } catch (Exception e) {
+   //          System.out.println("Error : " + e);
+   //      }
+   //
+   //      return desktop;
+   //  }
 
     private int[][] convertStringIntoTwoDimensionArray(String line) {
         System.out.println(line);
@@ -68,14 +88,6 @@ public class Levels {
                 column = 0;
             }
         }
-
-        // System.out.println("after converting to two-dimensional array");
-        // for(int i = 0; i < array.length; i++){
-        //     for(int j = 0; j < array[i].length; j++){
-        //         System.out.print(array[i][j]);
-        //     }
-        //     System.out.println();
-        // }
 
         return array;
     }
