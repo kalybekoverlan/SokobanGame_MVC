@@ -3,6 +3,8 @@ public class Model {
     private int[][] desktop;
     private int indexX;
     private int indexY;
+    private boolean isGamePlaying;
+    private int[][] goalIndexes;
     private Levels levels;
 
     public Model(Viewer viewer) {

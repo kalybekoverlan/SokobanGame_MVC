@@ -7,7 +7,7 @@ public class Levels {
     private int level;
 
     public Levels() {
-            level=4;
+        level=4;
     }
 
     public int[][] nextLevel(String fileName) {
@@ -15,7 +15,14 @@ public class Levels {
         File file = new File(fileName);
         try{
             String contentFile = getContentFile(file);
-            desktop = convertStringIntoTwoDimensionArray(contentFile);
+            desktop = convertString IntoTwoDimensionArray(contentFile);
+            System.out.println("after converting to two-dimensional array");
+            for(int i = 0; i < desktop.length; i++){
+                for(int j = 0; j < desktop[i].length; j++){
+                    System.out.print(desktop[i][j]);
+                }
+                System.out.println();
+            }
         } catch (Exception e) {
             System.out.println("Error : " + e);
         }
@@ -36,16 +43,15 @@ public class Levels {
 
         int[][] array = new int[row][];
         int column = 0;
-        int a = 0;
+        int index = 0;
 
         for(int i = 0; i < n; i++) {
             char symbol = line.charAt(i);
             if(symbol != '\n') {
                 column = column + 1;
-            }
-            if(symbol == '\n') {
-                array[a] = new int[column];
-                a = a + 1;
+            } else if(symbol == '\n') {
+                array[index] = new int[column];
+                index = index + 1;
                 column = 0;
             }
         }
@@ -57,22 +63,21 @@ public class Levels {
             if(symbol != '\n') {
                 array[row][column] = Integer.parseInt("" + symbol);
                 column = column + 1;
-            }
-            if(symbol == '\n') {
+            } else if(symbol == '\n') {
                 row = row + 1;
                 column = 0;
             }
         }
 
-        System.out.println("after converting to two-dimensional array");
-        for(int i = 0; i < array.length; i++){
-            for(int j = 0; j < array[i].length; j++){
-                System.out.print(array[i][j]);
-            }
-            System.out.println();
-        }
+        // System.out.println("after converting to two-dimensional array");
+        // for(int i = 0; i < array.length; i++){
+        //     for(int j = 0; j < array[i].length; j++){
+        //         System.out.print(array[i][j]);
+        //     }
+        //     System.out.println();
+        // }
 
-        return null;
+        return array;
     }
 
     private String getContentFile(File file) throws Exception{
