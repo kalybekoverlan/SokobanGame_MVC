@@ -20,9 +20,9 @@ public class Levels {
             case 2:
                 desktop = getLevelTwo();
                 break;
-            // case 3:
-            //     desktop = getLevelThree();
-            //     break;
+            case 3:
+                desktop = getLevelThree();
+                break;
             default:
                 level = 1;
                 desktop = getLevelOne();
@@ -150,6 +150,22 @@ public class Levels {
             {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
         };
         return levelTwo;
+    }
+
+    private int[][] getLevelThree() {
+        int[][] levelThree = new int[][] {
+            {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+            {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+            {2, 0, 2, 0, 0, 0, 0, 0, 0, 2},
+            {2, 0, 0, 0, 0, 3, 0, 0, 0, 2},
+            {2, 4, 2, 3, 0, 1, 0, 3, 0, 2},
+            {2, 4, 2, 0, 0, 0, 0, 0, 0, 2},
+            {2, 4, 2, 0, 0, 0, 0, 0, 0, 2},
+            {2, 2, 2, 0, 0, 0, 0, 0, 0, 2},
+            {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+            {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        };
+        return levelThree;
     }
 
 
