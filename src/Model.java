@@ -12,7 +12,6 @@ public class Model {
         isGamePlaying = true;
         levels = new Levels();
         desktop = levels.nextLevel();
-        // Optimize initialization method
         initialization();
     }
 
@@ -26,7 +25,6 @@ public class Model {
         indexX = getIndexXofGamer(desktop);
         indexY = getIndexYofGamer(desktop);
         goalIndexes = getGoalIndexes(desktop);
-        System.out.println(indexX+" "+indexY);
         desktop[indexX][indexY] = 1;
         // solve end
     }
@@ -50,23 +48,26 @@ public class Model {
     }
 
     private void checkGoal() {
-        for(int i = 0; i < goalIndexes.length; i++){
-            for(int j = 0; j < goalIndexes[i].length; j++){
-                System.out.print(goalIndexes[i][j] + " ");
+        for(int x = 0; x < goalIndexes[0].length ; x++) {
+            int goalIndexI = goalIndexes[0][x];
+            int goalIndexJ = goalIndexes[1][x];
+
+            if (desktop[goalIndexI][goalIndexJ] == 0 ) {
+                desktop[goalIndexI][goalIndexJ] = 4;
             }
-            System.out.println();
-        }
-        if (desktop[6][6] == 0){
-            desktop[6][6] = 4;
-        } else if (desktop[2][2] == 0) {
-            desktop[2][2] = 4;
         }
     }
 
     private void won() {
         boolean isWon = true;
-        if(desktop[2][2] != 3 || desktop[6][6] != 3) {
-            isWon = false;
+        for(int x = 0; x < goalIndexes[0].length ; x++) {
+            int goalIndexI = goalIndexes[0][x];
+            int goalIndexJ = goalIndexes[1][x];
+
+            if (desktop[goalIndexI][goalIndexJ] != 3 ) {
+                isWon = false;
+                break;
+            }
         }
 
         if(isWon){
