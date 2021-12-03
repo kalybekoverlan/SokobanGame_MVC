@@ -23,6 +23,15 @@ public class Levels {
             case 3:
                 desktop = getLevelThree();
                 break;
+            case 4:
+                desktop = getLevelFour();
+                break;
+            case 5:
+                desktop = getLevelFive();
+                break;
+            case 6:
+                desktop = getLevelSix();
+                break;
             default:
                 level = 1;
                 desktop = getLevelOne();
@@ -31,29 +40,8 @@ public class Levels {
         return desktop;
     }
 
-   // public int[][] nextLevel(String fileName) {
-   //
-   //      int[][] desktop = null;
-   //      File file = new File(fileName);
-   //      try{
-   //          String contentFile = getContentFile(file);
-   //          desktop = convertString IntoTwoDimensionArray(contentFile);
-   //          System.out.println("after converting to two-dimensional array");
-   //          for(int i = 0; i < desktop.length; i++){
-   //              for(int j = 0; j < desktop[i].length; j++){
-   //                  System.out.print(desktop[i][j]);
-   //              }
-   //              System.out.println();
-   //          }
-   //      } catch (Exception e) {
-   //          System.out.println("Error : " + e);
-   //      }
-   //
-   //      return desktop;
-   //  }
-
     private int[][] convertStringIntoTwoDimensionArray(String line) {
-        System.out.println(line);
+        // System.out.println(line);
         int n = line.length();
         int row = 0;
         for(int i = 0; i < n; i++) {
@@ -95,7 +83,6 @@ public class Levels {
     }
 
     private String getContentFile(File file) throws Exception{
-
         try(FileInputStream in = new FileInputStream(file)) {
             int size = (int) file.length();
             char[] array = new char[size];
@@ -167,6 +154,39 @@ public class Levels {
         };
         return levelThree;
     }
+
+    private int[][] getLevelFour() {
+        return getFileLevel("levels/level4.sok");
+    }
+
+    private int[][] getLevelFive() {
+        return getFileLevel("levels/level5.sok");
+    }
+
+    private int[][] getLevelSix() {
+        return getFileLevel("levels/level6.sok");
+    }
+
+    private int[][] getFileLevel(String fileName) {
+
+         int[][] desktop = null;
+         File file = new File(fileName);
+         try{
+             String contentFile = getContentFile(file);
+             desktop = convertStringIntoTwoDimensionArray(contentFile);
+             // System.out.println("after converting to two-dimensional array");
+             // for(int i = 0; i < desktop.length; i++){
+             //     for(int j = 0; j < desktop[i].length; j++){
+             //         System.out.print(desktop[i][j]);
+             //     }
+             //     System.out.println();
+             // }
+         } catch (Exception e) {
+             System.out.println("Error : " + e);
+         }
+
+         return desktop;
+     }
 
 
 }
