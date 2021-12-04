@@ -21,12 +21,16 @@ public class Model {
     // 3 - box
     // 4 - destination
     private void initialization() {
-        // solve
-        indexX = getIndexXofGamer(desktop);
-        indexY = getIndexYofGamer(desktop);
-        goalIndexes = getGoalIndexes(desktop);
-        desktop[indexX][indexY] = 1;
-        // solve end
+        if(isSingleGamer(desktop)) {
+            indexX = getIndexXofGamer(desktop);
+            indexY = getIndexYofGamer(desktop);
+            goalIndexes = getGoalIndexes(desktop);
+            desktop[indexX][indexY] = 1;
+            isGamePlaying = true;
+        } else {
+            isGamePlaying = false;
+        }
+
     }
 
     // up, right, down, left,
@@ -211,6 +215,10 @@ public class Model {
             }
         }
         return 0;
+    }
+
+    public boolean isGamePlaying() {
+        return isGamePlaying;
     }
 
 
