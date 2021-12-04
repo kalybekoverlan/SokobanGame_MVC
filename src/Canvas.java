@@ -32,6 +32,10 @@ public class Canvas extends JPanel{
     }
 
     public void paint(Graphics g) {
+        if (!model.isGamePlaying()) {
+            initializationError(g);
+            return;
+        }
         super.paint(g);
         int[][] desktop = model.getDesktop();
 
@@ -66,6 +70,14 @@ public class Canvas extends JPanel{
             y = y + height + 10;
         }
 
+    }
+
+    public void initializationError(Graphics g) {
+        g.setColor(new Color(199, 18, 50));
+        g.fillRect(0, 0, 700, 700);
+        g.setColor(Color.YELLOW);
+        g.drawRect(0, 0, 700, 700);
+        g.drawString("Initialization Error!!!",300,300);
     }
 
 }
