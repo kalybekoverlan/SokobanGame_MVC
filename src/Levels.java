@@ -174,17 +174,10 @@ public class Levels {
          try{
              String contentFile = getContentFile(file);
              desktop = convertStringIntoTwoDimensionArray(contentFile);
-             // System.out.println("after converting to two-dimensional array");
-             // for(int i = 0; i < desktop.length; i++){
-             //     for(int j = 0; j < desktop[i].length; j++){
-             //         System.out.print(desktop[i][j]);
-             //     }
-             //     System.out.println();
-             // }
          } catch (Exception e) {
-             System.out.println("Error : " + e);
+             System.out.println("Sokoban Game Error : " + e);
+             return getLevelOne();
          }
-
          return desktop;
      }
 
