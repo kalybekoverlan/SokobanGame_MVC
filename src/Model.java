@@ -21,9 +21,7 @@ public class Model {
     // 3 - box
     // 4 - destination
     private void initialization() {
-        if(isSingleGamer(desktop)) {
-            indexX = getIndexXofGamer(desktop);
-            indexY = getIndexYofGamer(desktop);
+        if(isSingleGamer()) {
             goalIndexes = getGoalIndexes(desktop);
             desktop[indexX][indexY] = 1;
             isGamePlaying = true;
@@ -148,18 +146,24 @@ public class Model {
         return  desktop;
     }
 
-    private boolean isSingleGamer(int[][] desktop) {
-        int gamerCounter=0;
+    private boolean isSingleGamer() {
+        int gamerCounter = 0;
+        int indexXofGamer = 0;
+        int indexYofGamer = 0;
 
         for(int i = 0; i < desktop.length; i++){
             for(int j = 0; j < desktop[i].length; j++){
                 if(desktop[i][j] == 1) {
                     gamerCounter = gamerCounter + 1;
+                    indexXofGamer = i;
+                    indexYofGamer = j;
                 }
             }
         }
 
         if(gamerCounter == 1) {
+            indexX = indexXofGamer;
+            indexY = indexYofGamer;
             return true;
         } else {
             // System.out.println("Gamer: " + gamerCounter);
@@ -191,30 +195,6 @@ public class Model {
         }
 
         return indexes;
-    }
-
-    private  int getIndexXofGamer(int[][] desktop) {
-
-        for(int i = 0; i < desktop.length; i++){
-            for(int j = 0; j < desktop[i].length; j++){
-                if(desktop[i][j] == 1) {
-                    return i;
-                }
-            }
-        }
-        return 0;
-    }
-
-    private  int getIndexYofGamer(int[][] desktop) {
-
-        for(int i = 0; i < desktop.length; i++){
-            for(int j = 0; j < desktop[i].length; j++){
-                if(desktop[i][j] == 1) {
-                    return j;
-                }
-            }
-        }
-        return 0;
     }
 
     public boolean isGamePlaying() {
