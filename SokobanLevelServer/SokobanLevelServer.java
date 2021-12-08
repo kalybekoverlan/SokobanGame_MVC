@@ -3,10 +3,12 @@ import java.net.ServerSocket;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 
 public class SokobanLevelServer {
     public static void main(String args[]) {
-        System.out.println("Hi i am server");
+        System.out.println("Sokoban Level Server started");
         int portNumber = 4446;
         try {
             ServerSocket serverSocket = new ServerSocket(portNumber);
@@ -16,7 +18,12 @@ public class SokobanLevelServer {
             String infoFromClient = in.readLine();
             System.out.println("Client socket : " + clientSocket);
             System.out.println("From client : " + infoFromClient);
+
             String desktop = "2222222222";
+            PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+            out.println(desktop);
+            System.out.println("level : " + desktop + " sended");
+
         } catch (IOException ioe) {
             System.out.println("Sokoban Level Server Error : " + ioe);
         }
