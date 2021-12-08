@@ -1,4 +1,4 @@
-// import java.net.Socket;
+import java.net.Socket;
 import java.net.ServerSocket;
 import java.io.IOException;
 // import java.io.BufferedReader;
@@ -15,6 +15,20 @@ public class SokobanLevelServer {
         try {
             serverSocket = new ServerSocket(portNumber);
         } catch (IOException ioe) {
+        }
+
+    }
+
+    public void go() {
+        System.out.println("Sokoban Level Server started");
+
+        while(true) {
+
+            try {
+                Socket clientSocket = serverSocket.accept();
+            } catch (IOException ioe) {
+                System.out.println("Error  : " + ioe);
+            }
         }
 
     }
