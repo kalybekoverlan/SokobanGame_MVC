@@ -1,4 +1,6 @@
-public class Desktop {
+import java.io.Serializable;
+
+public class Desktop implements Serializable {
     private int[][] desktop;
 
     public Desktop() {
