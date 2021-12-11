@@ -2,6 +2,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.FileNotFoundException;
+import java.net.Socket;
+import java.io.ObjectInputStream;
 
 public class Levels {
     private int level;
@@ -31,6 +33,9 @@ public class Levels {
                 break;
             case 6:
                 desktop = getLevelSix();
+                break;
+            case 7:
+                desktop = getLevelSeven();
                 break;
             default:
                 level = 1;
@@ -167,6 +172,10 @@ public class Levels {
         return getFileLevel("levels/level6.sok");
     }
 
+    private int[][] getLevelSeven() {
+        return getServerLevel();
+    }
+
     private int[][] getFileLevel(String fileName) {
 
          int[][] desktop = null;
@@ -178,6 +187,29 @@ public class Levels {
              System.out.println("Sokoban Game Error : " + e);
              return getLevelOne();
          }
+         return desktop;
+     }
+
+     private int[][] getServerLevel() {
+         // hostname of home virtual server
+         String hostName = "192.168.157.128";
+         int portNumber = 4446;
+         int[][] desktop = null;
+         // System.out.println("Connection to : Sokoban Level Server");
+         try(
+         Socket socket = new Socket(hostName, portNumber);
+         ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
+         ) {
+             Desktop desktopObject = (Desktop) in.readObject();
+             desktop = desktopObject.getDesktop();
+         } catch (ClassNotFoundException cnfe) {
+             System.out.println("Error : " + cnfe);
+             return getLevelOne();
+         } catch (IOException ioe) {
+             System.out.println("Error : " + ioe);
+             return getLevelOne();
+         }
+         System.out.println("Close connection");
          return desktop;
      }
 
