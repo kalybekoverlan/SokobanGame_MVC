@@ -10,10 +10,20 @@ public class SokobanLevelClient {
         int portNumber = 4446;
         System.out.println("Connection to : Sokoban Level Server");
 
-        try(Socket socket = new Socket(hostName, portNumber);
-            ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
-            ) {
-                Desktop desktop = (Desktop) in.readObject();
+        try(
+        Socket socket = new Socket(hostName, portNumber);
+        ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
+        ) {
+            Desktop desktopObject = (Desktop) in.readObject();
+            int[][] desktop = desktopObject.getDesktop();
+
+            for(int i = 0; i < desktop.length; i++ ) {
+                for(int j = 0; j <desktop[i].length; j++) {
+                    System.out.print(desktop[i][j]);
+                }
+                System.out.println();
+            }
+
         } catch (ClassNotFoundException cnfe) {
             System.out.println("Error : " + cnfe);
         } catch (IOException ioe) {
