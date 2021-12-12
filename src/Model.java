@@ -220,6 +220,20 @@ public class Model {
         }
     }
 
+    public void menuAction(String levelNumber) {
+        switch (levelNumber) {
+            case "level1":
+                levels.setNextLevelNumber(1);
+                desktop = levels.nextLevel();
+                initialization();
+                viewer.update();
+                break;
+            default:
+                return;
+        }
+
+    }
+
 
 
 }

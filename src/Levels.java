@@ -230,5 +230,9 @@ public class Levels {
          return desktop;
      }
 
+     public void setNextLevelNumber(int level) {
+         this.level = level;
+     }
+
 
 }

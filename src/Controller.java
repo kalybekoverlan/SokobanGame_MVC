@@ -1,7 +1,9 @@
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class Controller implements KeyListener {
+public class Controller implements KeyListener, ActionListener {
     private Model model;
 
     public Controller(Viewer viewer) {
@@ -39,5 +41,10 @@ public class Controller implements KeyListener {
     public void keyReleased(KeyEvent event) {}
 
     public void keyTyped(KeyEvent e) {}
+
+    public void actionPerformed(ActionEvent e) {
+        String levelNumber = e.getActionCommand();
+        model.menuAction(levelNumber);
+    }
 
 }
