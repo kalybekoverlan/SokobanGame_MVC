@@ -5,6 +5,9 @@ import java.io.ObjectOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class MyClient extends Thread {
     private Socket socket;
@@ -16,11 +19,13 @@ public class MyClient extends Thread {
     public void run() {
         System.out.println("socket : " + socket);
         try {
+            InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
+            BufferedReader in = new BufferedReader(inputStreamReader);
+            String levelNumber = in.readLine();
             OutputStream outputStream = socket.getOutputStream();
             ObjectOutputStream out = new ObjectOutputStream(outputStream);
-            int[][] desktopArray = getFileLevel("levels/level7.sok");
+            int[][] desktopArray = getFileLevel("levels/level" + levelNumber + ".sok");
             Desktop desktop = new Desktop(desktopArray);
-
             out.writeObject(desktop);
             socket.close();
         } catch(IOException ioe) {
