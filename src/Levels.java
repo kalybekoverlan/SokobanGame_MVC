@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.net.Socket;
 import java.io.ObjectInputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 
 public class Levels {
     private int level;
@@ -36,6 +38,12 @@ public class Levels {
                 break;
             case 7:
                 desktop = getLevelSeven();
+                break;
+            case 8:
+                desktop = getLevelEight();
+                break;
+            case 9:
+                desktop = getLevelNine();
                 break;
             default:
                 level = 1;
@@ -116,11 +124,11 @@ public class Levels {
         int[][] levelOne = new int[][] {
             {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
             {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-            {2, 0, 4, 0, 0, 0, 0, 0, 0, 2},
-            {2, 0, 0, 0, 0, 0, 3, 0, 0, 2},
             {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
             {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-            {2, 0, 1, 3, 0, 0, 4, 0, 0, 2},
+            {2, 0, 0, 1, 3, 4, 0, 0, 0, 2},
+            {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+            {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
             {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
             {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
             {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -132,12 +140,12 @@ public class Levels {
         int[][] levelTwo = new int[][] {
             {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
             {2, 0, 0, 0, 2, 2, 0, 0, 0, 2},
-            {2, 0, 0, 4, 2, 2, 0, 0, 0, 2},
+            {2, 0, 0, 0, 2, 2, 0, 0, 0, 2},
             {2, 0, 0, 2, 2, 2, 2, 0, 0, 2},
-            {2, 0, 3, 2, 1, 4, 2, 0, 0, 2},
+            {2, 0, 0, 2, 1, 3, 4, 0, 0, 2},
             {2, 0, 0, 2, 0, 0, 2, 0, 0, 2},
-            {2, 0, 0, 0, 3, 0, 3, 0, 0, 2},
-            {2, 0, 0, 0, 4, 0, 0, 0, 0, 2},
+            {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+            {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
             {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
             {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
         };
@@ -148,11 +156,11 @@ public class Levels {
         int[][] levelThree = new int[][] {
             {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
             {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-            {2, 0, 2, 0, 0, 0, 0, 0, 0, 2},
+            {2, 0, 2, 0, 0, 4, 0, 0, 0, 2},
             {2, 0, 0, 0, 0, 3, 0, 0, 0, 2},
-            {2, 4, 2, 3, 0, 1, 0, 3, 0, 2},
-            {2, 4, 2, 0, 0, 0, 0, 0, 0, 2},
-            {2, 4, 2, 0, 0, 0, 0, 0, 0, 2},
+            {2, 0, 2, 0, 0, 1, 0, 0, 0, 2},
+            {2, 0, 2, 0, 0, 0, 0, 0, 0, 2},
+            {2, 0, 2, 0, 0, 0, 0, 0, 0, 2},
             {2, 2, 2, 0, 0, 0, 0, 0, 0, 2},
             {2, 0, 0, 0, 0, 0, 0, 0, 0, 2},
             {2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -173,7 +181,15 @@ public class Levels {
     }
 
     private int[][] getLevelSeven() {
-        return getServerLevel();
+        return getServerLevel("7");
+    }
+
+    private int[][] getLevelEight() {
+        return getServerLevel("8");
+    }
+
+    private int[][] getLevelNine() {
+        return getServerLevel("9");
     }
 
     private int[][] getFileLevel(String fileName) {
@@ -190,16 +206,17 @@ public class Levels {
          return desktop;
      }
 
-     private int[][] getServerLevel() {
-         // hostname of home virtual server
-         String hostName = "192.168.157.128";
+     private int[][] getServerLevel(String levelNumber) {
+         String hostName = "localhost";
          int portNumber = 4446;
          int[][] desktop = null;
          // System.out.println("Connection to : Sokoban Level Server");
          try(
          Socket socket = new Socket(hostName, portNumber);
-         ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
+         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
          ) {
+             out.println(levelNumber);
+             ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
              Desktop desktopObject = (Desktop) in.readObject();
              desktop = desktopObject.getDesktop();
          } catch (ClassNotFoundException cnfe) {

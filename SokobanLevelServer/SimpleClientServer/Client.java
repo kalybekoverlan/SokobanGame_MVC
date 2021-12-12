@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class Client {
     public static void main(String args[]) {
         // hostname of home virtual server
-        String hostName = "192.168.204.129";
+        String hostName = "localhost";
         int portNumber = 4446;
         System.out.println("Connection to : Sokoban Level Server");
 
