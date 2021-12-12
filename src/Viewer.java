@@ -3,10 +3,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import java.awt.event.ItemListener;
 
 
-public class Viewer implements ItemListener {
+public class Viewer {
     private Canvas canvas;
     private JFrame frame;
 
@@ -20,7 +19,8 @@ public class Viewer implements ItemListener {
 
         menuBar.add(levelmenu);
         JMenuItem level1Item= new JMenuItem("level 1");
-        level1Item.addItemListener(this);
+        level1Item.addActionListener(controller);
+        level1Item.setActionCommand("level1");
         JMenuItem level2Item= new JMenuItem("level 2");
         JMenuItem level3Item= new JMenuItem("level 3");
         JMenuItem level4Item= new JMenuItem("level 4");
@@ -58,14 +58,5 @@ public class Viewer implements ItemListener {
         JOptionPane.showMessageDialog(frame, "You won!!!");
         return true;
     }
-
-    public void itemStateChanged(ItemEvent e) {
-        if () {
-
-        } else {
-
-        }
-    }
-
 
 }
