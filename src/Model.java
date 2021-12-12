@@ -228,6 +228,54 @@ public class Model {
                 initialization();
                 viewer.update();
                 break;
+            case "level2":
+                levels.setNextLevelNumber(2);
+                desktop = levels.nextLevel();
+                initialization();
+                viewer.update();
+                break;
+            case "level3":
+                levels.setNextLevelNumber(3);
+                desktop = levels.nextLevel();
+                initialization();
+                viewer.update();
+                break;
+            case "level4":
+                levels.setNextLevelNumber(4);
+                desktop = levels.nextLevel();
+                initialization();
+                viewer.update();
+                break;
+            case "level5":
+                levels.setNextLevelNumber(5);
+                desktop = levels.nextLevel();
+                initialization();
+                viewer.update();
+                break;
+            case "level6":
+                levels.setNextLevelNumber(6);
+                desktop = levels.nextLevel();
+                initialization();
+                viewer.update();
+                break;
+            case "level7":
+                levels.setNextLevelNumber(7);
+                desktop = levels.nextLevel();
+                initialization();
+                viewer.update();
+                break;
+            case "level8":
+                levels.setNextLevelNumber(8);
+                desktop = levels.nextLevel();
+                initialization();
+                viewer.update();
+                break;
+            case "level9":
+                levels.setNextLevelNumber(9);
+                desktop = levels.nextLevel();
+                initialization();
+                viewer.update();
+                break;
             default:
                 return;
         }
