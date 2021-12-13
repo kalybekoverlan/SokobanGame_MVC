@@ -234,5 +234,9 @@ public class Levels {
          this.level = level;
      }
 
+     public int getLevelNumber() {
+         return level;
+     }
+
 
 }

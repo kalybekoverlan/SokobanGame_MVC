@@ -279,9 +279,10 @@ public class Model {
             default:
                 return;
         }
-
     }
 
-
+    public int getLevelNumber() {
+        return levels.getLevelNumber();
+    }
 
 }
