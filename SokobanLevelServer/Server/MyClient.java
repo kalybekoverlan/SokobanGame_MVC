@@ -5,7 +5,6 @@ import java.io.ObjectOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -110,7 +109,6 @@ public class MyClient extends Thread {
              desktop = convertStringIntoTwoDimensionArray(contentFile);
          } catch (Exception e) {
              System.out.println("Sokoban Game Error : " + e);
-             // return getLevelOne();
          }
          return desktop;
      }
