@@ -1,9 +1,10 @@
 import java.io.File;
 import java.io.IOException;
-import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Font;
+import javax.swing.JPanel;
 import javax.imageio.ImageIO;
 
 public class Canvas extends JPanel{
@@ -15,12 +16,12 @@ public class Canvas extends JPanel{
 
     public Canvas(Model model) {
         this.model = model;
-        setBackground(Color.GRAY);
+        setBackground(new Color(59, 91, 161));
         setOpaque(true);
-        File fileNameImageGamer = new File("../images/gamer.png");
-        File fileNameImageWall = new File("../images/wall.png");
-        File fileNameImageBox = new File("../images/box.png");
-        File fileNameImageGoal = new File("../images/goal.png");
+        File fileNameImageGamer = new File("images/gamer.png");
+        File fileNameImageWall = new File("images/wall.png");
+        File fileNameImageBox = new File("images/box.png");
+        File fileNameImageGoal = new File("images/goal.png");
         try {
             imageGamer = ImageIO.read(fileNameImageGamer);
             imageWall = ImageIO.read(fileNameImageWall);
@@ -45,39 +46,39 @@ public class Canvas extends JPanel{
         int width = 50;
         int height = 50;
 
+        g.setColor(new Color(213, 241, 255));
+        setFont(new Font("SansSerif", Font.BOLD, 15));
+        g.drawString("Level : " + (model.getLevelNumber() - 1), 250, 20);
+
         for(int i=0; i < desktop.length; i++) {
             for(int j=0; j < desktop[i].length; j++ ) {
                 if(desktop[i][j] == 1) {
                     g.drawImage(imageGamer, x, y, null);
-                    //g.setColor(new Color(199, 18, 50));
-                    //g.fillRect(x, y, width, height);
-                    //g.setColor(Color.YELLOW);
-                    //g.drawRect(x, y, width, height);
                 } else if(desktop[i][j] == 2) {
                     g.drawImage(imageWall, x, y, null);
-                    //g.setColor(new Color(39, 177, 67));
-                    //g.fillRect(x, y, width, height);
-                    //g.setColor(Color.BLUE);
-                    //g.drawRect(x, y, width, height);
                 } else if(desktop[i][j] == 3) {
                     g.drawImage(imageBox, x, y, null);
                 } else if(desktop[i][j] == 4) {
                     g.drawImage(imageGoal, x, y, null);
                 }
-                x = x + width + 10;
+                x = x + width;
             }
             x = start;
-            y = y + height + 10;
+            y = y + height;
         }
 
     }
 
     public void initializationError(Graphics g) {
-        g.setColor(new Color(199, 18, 50));
-        g.fillRect(0, 0, 700, 700);
-        g.setColor(Color.YELLOW);
-        g.drawRect(0, 0, 700, 700);
-        g.drawString("Initialization Error!!!",300,300);
+        g.setColor(new Color(35, 63, 122));
+        g.drawRect(0, 0, 920, 700);
+        g.fillRect(0, 0, 920, 700);
+        g.setColor(new Color(159, 225, 255));
+        g.setFont(new Font("SansSerif", Font.BOLD, 20));
+        g.drawString("Level : " + (model.getLevelNumber() - 1)
+                    + ". Initialization Error!!! "
+                    + " Choice another level from menu \"Levels\"", 70, 320);
     }
+
 
 }

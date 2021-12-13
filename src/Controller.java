@@ -17,7 +17,6 @@ public class Controller implements KeyListener, ActionListener {
     public void keyPressed(KeyEvent event) {
         int keyCode = event.getKeyCode();
 
-
         String direction = "";
     // left, up, right, down
         switch (keyCode) {

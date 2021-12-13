@@ -19,7 +19,7 @@ public class Model {
     // 1 - player
     // 2 - wall
     // 3 - box
-    // 4 - destination
+    // 4 - goal
     private void initialization() {
         if(isSingleGamer() && isEqualBoxesGoals()) {
             goalIndexes = getGoalIndexes(desktop);
@@ -204,6 +204,7 @@ public class Model {
     public boolean isEqualBoxesGoals() {
         int amountOfBoxes = 0;
         int amountOfGoals = 0;
+
         for(int i = 0; i < desktop.length; i++){
             for(int j = 0; j < desktop[i].length; j++){
                 if(desktop[i][j] == 3) {
@@ -213,6 +214,7 @@ public class Model {
                 }
             }
         }
+
         if(amountOfBoxes == amountOfGoals) {
             return true;
         } else {

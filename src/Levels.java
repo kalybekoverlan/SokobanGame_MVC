@@ -2,10 +2,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.FileNotFoundException;
-import java.net.Socket;
 import java.io.ObjectInputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.Socket;
 
 public class Levels {
     private int level;
@@ -54,7 +54,6 @@ public class Levels {
     }
 
     private int[][] convertStringIntoTwoDimensionArray(String line) {
-        // System.out.println(line);
         int n = line.length();
         int row = 0;
         for(int i = 0; i < n; i++) {
@@ -219,15 +218,16 @@ public class Levels {
              ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
              Desktop desktopObject = (Desktop) in.readObject();
              desktop = desktopObject.getDesktop();
-         } catch (ClassNotFoundException cnfe) {
-             System.out.println("Error : " + cnfe);
-             return getLevelOne();
-         } catch (IOException ioe) {
-             System.out.println("Error : " + ioe);
+         } catch (ClassNotFoundException | IOException exp) {
+             System.out.println("Error : " + exp);
              return getLevelOne();
          }
          System.out.println("Close connection");
-         return desktop;
+         if(desktop == null) {
+             return getLevelOne();
+         } else {
+            return desktop;
+         }
      }
 
      public void setNextLevelNumber(int level) {
